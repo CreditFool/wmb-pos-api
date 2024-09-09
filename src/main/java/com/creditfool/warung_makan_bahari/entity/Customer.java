@@ -1,5 +1,6 @@
 package com.creditfool.warung_makan_bahari.entity;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -30,4 +31,6 @@ public class Customer {
 
     @Column(name = "is_member", nullable = false)
     private Boolean isMember;
+
+    private LocalDateTime createdAt;
 }
