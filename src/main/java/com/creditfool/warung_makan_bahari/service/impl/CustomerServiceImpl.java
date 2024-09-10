@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import com.creditfool.warung_makan_bahari.dto.customer.CustomerCreateUpdateDto;
+import com.creditfool.warung_makan_bahari.dto.request.CustomerCreateAndUpdateRequest;
 import com.creditfool.warung_makan_bahari.entity.Customer;
 import com.creditfool.warung_makan_bahari.exception.NotFoundException;
 import com.creditfool.warung_makan_bahari.repository.CustomerRepository;
@@ -23,11 +23,8 @@ public class CustomerServiceImpl implements CustomerService {
     private final NotFoundException customerNotFoundException = new NotFoundException("Customer Not Found");
 
     @Override
-    public Customer createCustomer(CustomerCreateUpdateDto ccd) {
-        Customer customer = new Customer();
-        customer.setCustomerName(ccd.customerName());
-        customer.setMobilePhone(ccd.mobilePhone());
-        customer.setIsMember(ccd.isMember());
+    public Customer createCustomer(CustomerCreateAndUpdateRequest request) {
+        Customer customer = request.toCustomer();
         return customerRepository.save(customer);
     }
 
@@ -55,13 +52,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer updateCustomer(UUID id, Customer customer) {
-        Optional<Customer> oldCustomer = customerRepository.findById(id);
-        if (oldCustomer.isEmpty()) {
+    public Customer updateCustomer(UUID id, CustomerCreateAndUpdateRequest cur) {
+        Optional<Customer> savedCustomer = customerRepository.findById(id);
+        if (savedCustomer.isEmpty()) {
             throw customerNotFoundException;
         }
-        customer.setId(id);
-        return customerRepository.save(customer);
+        savedCustomer.get().setCustomerName(cur.customerName());
+        savedCustomer.get().setMobilePhone(cur.mobilePhone());
+        savedCustomer.get().setIsMember(cur.isMember());
+        return customerRepository.save(savedCustomer.get());
     }
 
 }

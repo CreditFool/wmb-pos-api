@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.creditfool.warung_makan_bahari.dto.customer.CustomerCreateUpdateDto;
+import com.creditfool.warung_makan_bahari.dto.request.CustomerCreateAndUpdateRequest;
 import com.creditfool.warung_makan_bahari.entity.Customer;
 import com.creditfool.warung_makan_bahari.service.CustomerService;
 
@@ -40,13 +40,13 @@ public class CustomerController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer createCustomer(@Valid @RequestBody CustomerCreateUpdateDto ccd) {
-        return customerService.createCustomer(ccd);
+    public Customer createCustomer(@Valid @RequestBody CustomerCreateAndUpdateRequest request) {
+        return customerService.createCustomer(request);
     }
 
     @PutMapping("{id}")
-    public Customer updateCustomer(@PathVariable UUID id, @RequestBody Customer customer) {
-        return customerService.updateCustomer(id, customer);
+    public Customer updateCustomer(@PathVariable UUID id, @RequestBody CustomerCreateAndUpdateRequest request) {
+        return customerService.updateCustomer(id, request);
     }
 
     @DeleteMapping("{id}")

@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.creditfool.warung_makan_bahari.dto.customer.CustomerCreateUpdateDto;
+import com.creditfool.warung_makan_bahari.dto.request.CustomerCreateAndUpdateRequest;
 import com.creditfool.warung_makan_bahari.entity.Customer;
 
 @Service
@@ -15,9 +15,9 @@ public interface CustomerService {
 
     public Customer getCustomerById(UUID id);
 
-    public Customer createCustomer(CustomerCreateUpdateDto ccd);
+    public Customer createCustomer(CustomerCreateAndUpdateRequest customerCreateRequest);
 
-    public Customer updateCustomer(UUID id, Customer customer);
+    public Customer updateCustomer(UUID id, CustomerCreateAndUpdateRequest customerUpdateRequest);
 
     public void deleteCustomer(UUID id);
 
