@@ -32,7 +32,12 @@ public class Customer {
     @Column(name = "is_member", nullable = false)
     private Boolean isMember;
 
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 }
