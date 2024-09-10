@@ -26,7 +26,7 @@ public class Customer {
     @Column(name = "customer_name", nullable = false)
     private String customerName;
 
-    @Column(name = "mobile_phone_no", nullable = false, unique = true)
+    @Column(name = "mobile_phone_no", nullable = false)
     private String mobilePhone;
 
     @Column(name = "is_member", nullable = false)
