@@ -7,7 +7,6 @@ import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 import com.creditfool.warung_makan_bahari.dto.customer.CustomerCreateUpdateDto;
-import com.creditfool.warung_makan_bahari.dto.customer.CustomerListDto;
 import com.creditfool.warung_makan_bahari.entity.Customer;
 import com.creditfool.warung_makan_bahari.exception.NotFoundException;
 import com.creditfool.warung_makan_bahari.repository.CustomerRepository;
