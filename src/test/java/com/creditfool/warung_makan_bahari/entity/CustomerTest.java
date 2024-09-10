@@ -10,7 +10,7 @@ class CustomerTest {
     }
 
     @Test
-    public void Customer_IdField_GeneratesUUID() {
+    void Customer_IdField_GeneratesUUID() {
         Customer customer = MakeCustomer();
         UUID expectedId = UUID.randomUUID();
 
@@ -23,7 +23,7 @@ class CustomerTest {
     }
 
     @Test
-    public void Customer_CustomerNameField_NonNullConstraint() {
+    void Customer_CustomerNameField_NonNullConstraint() {
         Customer customer = MakeCustomer();
         String expectedName = "John Doe";
 
@@ -36,7 +36,7 @@ class CustomerTest {
     }
 
     @Test
-    public void Customer_MobilePhoneField_UniqueConstraint() {
+    void Customer_MobilePhoneField_UniqueConstraint() {
         Customer customer = MakeCustomer();
         String expectedPhone = "1234567890";
 
