@@ -1,8 +1,11 @@
 package com.creditfool.warung_makan_bahari.entity;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.LocalDateTime;
 import java.util.UUID;
+
+import org.junit.jupiter.api.Test;
 
 class CustomerTest {
     private Customer MakeCustomer() {
@@ -10,7 +13,7 @@ class CustomerTest {
     }
 
     @Test
-    public void Customer_IdField_GeneratesUUID() {
+    void Customer_IdField_GeneratesUUID() {
         Customer customer = MakeCustomer();
         UUID expectedId = UUID.randomUUID();
 
@@ -23,7 +26,7 @@ class CustomerTest {
     }
 
     @Test
-    public void Customer_CustomerNameField_NonNullConstraint() {
+    void Customer_CustomerNameField_NonNullConstraint() {
         Customer customer = MakeCustomer();
         String expectedName = "John Doe";
 
@@ -36,7 +39,7 @@ class CustomerTest {
     }
 
     @Test
-    public void Customer_MobilePhoneField_UniqueConstraint() {
+    void Customer_MobilePhoneField_UniqueConstraint() {
         Customer customer = MakeCustomer();
         String expectedPhone = "1234567890";
 
@@ -46,5 +49,27 @@ class CustomerTest {
         // Assert: state-based check
         String result = customer.getMobilePhone();
         assertEquals(expectedPhone, result);
+    }
+
+    // Creating a Customer object with all fields populated
+    @Test
+    void test_create_customer_with_all_fields_populated() {
+        UUID id = UUID.randomUUID();
+        String customerName = "John Doe";
+        String mobilePhone = "1234567890";
+        Boolean isMember = true;
+        LocalDateTime createdAt = LocalDateTime.now();
+        LocalDateTime updatedAt = LocalDateTime.now();
+        LocalDateTime deletedAt = LocalDateTime.now();
+
+        Customer customer = new Customer(id, customerName, mobilePhone, isMember, createdAt, updatedAt, deletedAt);
+
+        assertEquals(id, customer.getId());
+        assertEquals(customerName, customer.getCustomerName());
+        assertEquals(mobilePhone, customer.getMobilePhone());
+        assertEquals(isMember, customer.getIsMember());
+        assertEquals(createdAt, customer.getCreatedAt());
+        assertEquals(updatedAt, customer.getUpdatedAt());
+        assertEquals(deletedAt, customer.getDeletedAt());
     }
 }

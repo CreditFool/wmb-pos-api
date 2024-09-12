@@ -8,6 +8,6 @@ class WarungMakanBahariApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// only sanity check
 	}
-
 }

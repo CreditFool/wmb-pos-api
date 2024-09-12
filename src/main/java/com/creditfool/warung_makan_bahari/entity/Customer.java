@@ -26,11 +26,18 @@ public class Customer {
     @Column(name = "customer_name", nullable = false)
     private String customerName;
 
-    @Column(name = "mobile_phone_no", nullable = false, unique = true)
+    @Column(name = "mobile_phone_no", nullable = false)
     private String mobilePhone;
 
     @Column(name = "is_member", nullable = false)
     private Boolean isMember;
 
-    private LocalDateTime createdAt;
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 }
